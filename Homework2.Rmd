@@ -32,7 +32,7 @@ The overall data of course evaluation scores outputs a nicely left-skewed histog
 ### Part B
 
 ```{r, echo = FALSE}
-ggplot(data = profs) + geom_boxplot(aes(x=eval, y = native)) + labs(x = "Average Evaluation Score")
+ggplot(data = profs) + geom_boxplot(aes(x=eval, y = native)) + labs(x = "Average Evaluation Score", y = "Is English their Native Language?")
 ```
 
 
@@ -93,11 +93,12 @@ groupedB = bikeshare %>%
   group_by(hr, workingday) %>%
   summarize(meanRides = mean(total))
 
+
 ggplot(data = groupedB) + geom_line(aes(x=hr, y=meanRides)) + facet_wrap(~workingday) + labs(x = "Hour of the Day", y = "Average Rides")
 ```
 
 
-The above graphs show average number of bike rentals during the day, but this time separated by whether or not they were rented on working days. A working day is a day that isn't a weekend nor holiday, and it shows the same peak at hours 6 and 18 while the non-working days appear to peak at hour 12, which may just be people biking leisurely. 
+The above graphs show average number of bike rentals during the day, but this time separated by whether or not they were rented on working days. A working day (represented by 1) is a day that isn't a weekend nor holiday, and it shows the same peak at hours 6 and 18 while the non-working days (represented by 0) appear to peak at hour 12, which may just be people biking leisurely. 
 
 ### Part C
 
@@ -217,7 +218,7 @@ This figure shows the number of unique songs that made it to the Billboard Top 1
 ### Part C
 
 ```{r, echo = FALSE}
-
+  
 
 tenWeekHits = billboard %>%
   group_by(song_id, performer) %>%
